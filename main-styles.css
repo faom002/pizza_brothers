@@ -4,8 +4,11 @@ body{
 
 .pizza-brothers{
 	background-color: #761f18;
+	margin: 10px 10px;
 }
 
 .pizza-brothers img{
-
+	width: 8vh;
+	margin: 8px 8px;
+	border-radius: 25%;
 }
