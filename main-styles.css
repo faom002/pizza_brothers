@@ -6,17 +6,31 @@ body {
     background-color: #761f18;
     margin: 8px 8px;
     display: flex;
+
 }
 
+
+
 .pizza-brothers img {
-    width: 8vh;
+    width: 10vh;
     margin: 8px 8px;
     border-radius: 25%;
 }
 
 .pizza-brothers p {
-    padding: 23px 23px;
+    padding: 30px 23px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    font-weight: 600;
+
 }
+
+.button-container {
+  margin-left: auto; /* Pushes the button to the right */
+  padding: 36px 36px;
+}
+
+
 
 
 .pizza-brothers:hover {
@@ -32,6 +46,8 @@ body {
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
 }
+
+/*animation for top bar*/
 
 @keyframes pizza-brothers-animation-in {
   from {
@@ -65,4 +81,58 @@ body {
     margin: 8px;
     display: flex;
   }
+}
+
+
+
+
+
+/* css for button*/
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+/*media queries making it support other devices*/
+@media (max-width: 767px) {
+
+ .pizza-brothers {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .pizza-brothers img {
+    flex: 0 0 15%; 
+  }
+  
+
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+
+
 }
