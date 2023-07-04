@@ -1,16 +1,68 @@
-body{
-	background-color: lightgrey;
+body {
+    background-color: lightgrey;
 }
 
-.pizza-brothers{
-	background-color: #761f18;
-	margin: 8px 8px;
-	display: flex;
+.pizza-brothers {
+    background-color: #761f18;
+    margin: 8px 8px;
+    display: flex;
 }
 
-.pizza-brothers img{
-	width: 8vh;
-	margin: 8px 8px;
-	border-radius: 25%;
+.pizza-brothers img {
+    width: 8vh;
+    margin: 8px 8px;
+    border-radius: 25%;
 }
 
+.pizza-brothers p {
+    padding: 23px 23px;
+}
+
+
+.pizza-brothers:hover {
+  animation-name: pizza-brothers-animation-in;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+.pizza-brothers:not(:hover) {
+  animation-name: pizza-brothers-animation-out;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes pizza-brothers-animation-in {
+  from {
+    background-color: #761f18;
+    margin: 8px;
+    display: flex;
+  }
+
+  to {
+    background-color: #761f18;
+    margin: 8px;
+    display: flex;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px;
+  }
+}
+
+@keyframes pizza-brothers-animation-out {
+  from {
+    background-color: #761f18;
+    margin: 8px;
+    display: flex;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px;
+  }
+
+  to {
+    background-color: #761f18;
+    margin: 8px;
+    display: flex;
+  }
+}
