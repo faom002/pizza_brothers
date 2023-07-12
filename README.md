@@ -5,6 +5,8 @@ Pizza Brothers is a website where you can order a pizza of your choice with vari
 # Updated: 
 Basic Spring Boot API with MySQL Integration as Backend
 A simplified Spring Boot API has been developed, featuring seamless integration with MySQL as the backend database.
+
+run the db script to create a database first located inside project
 -------------------------------------------------------------------------------------------------------------------
 
 # Installation -> Backend
