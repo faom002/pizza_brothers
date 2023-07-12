@@ -107,6 +107,16 @@ body {
   touch-action: manipulation;
 }
 
+.button-74 a {
+ text-decoration: none;
+  color: #422800;
+}
+
+.button-74 a:hover {
+ text-decoration: underline;
+ 
+}
+
 .button-74:hover {
   background-color: #fff;
 }
