@@ -1,6 +1,12 @@
 # Pizza Brothers
 Pizza Brothers is a website where you can order a pizza of your choice with various toppings.
 
+-------------------------------------------------------------------------------------------------------------------
+# Updated: 
+Basic Spring Boot API with MySQL Integration as Backend
+A simplified Spring Boot API has been developed, featuring seamless integration with MySQL as the backend database.
+-------------------------------------------------------------------------------------------------------------------
+
 Installation
 To get started with Pizza Brothers, follow these steps:
 
