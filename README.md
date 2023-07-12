@@ -7,7 +7,18 @@ Basic Spring Boot API with MySQL Integration as Backend
 A simplified Spring Boot API has been developed, featuring seamless integration with MySQL as the backend database.
 -------------------------------------------------------------------------------------------------------------------
 
-# Installation
+# Installation -> Backend
+open up project in your favourite IDE
+
+and type the following in the terminal 
+
+windows:
+.\gradlew.bat bootRun
+
+Linux:
+.\gradlew bootRun
+
+# Installation -> Frontend
 To get started with Pizza Brothers, follow these steps:
 
 Clone the Git repository:
