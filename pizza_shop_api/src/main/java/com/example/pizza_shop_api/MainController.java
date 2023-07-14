@@ -1,6 +1,8 @@
-package com.example.pizza_shop_api.login_and_register;
+package com.example.pizza_shop_api;
 
 
+import com.example.pizza_shop_api.login_and_register.UserService;
+import com.example.pizza_shop_api.login_and_register.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller // This means that this class is a Controller
-@RequestMapping(path="/pizza") // This means URL's start with /demo (after Application path)
+@RequestMapping(path="/pizza") // This means URL's start with /pizza (after Application path)
 @CrossOrigin(origins = "*")
 public class MainController {
     @Autowired // This means to get the bean called userRepository
@@ -24,7 +26,7 @@ public class MainController {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        User n = new User();
+        UserService n = new UserService();
         n.setUserName(userName);
         n.setPassword(password);
         userRepository.save(n);
@@ -32,7 +34,7 @@ public class MainController {
     }
 
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers() {
+    public @ResponseBody Iterable<UserService> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
