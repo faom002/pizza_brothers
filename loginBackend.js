@@ -14,13 +14,21 @@ function loginExisitingUser() {
         .then(response => response.json())
         .then(data => {
             // Process the retrieved data here
+            let found = false;
             data.forEach(item => {
                 if (userName === item.userName && password === item.password) {
                     console.log(item.userName + " " + item.password);
-                }else {
-                	console.log("incorrect password and username");
+                    found = true;
+                   
+                    const url = 'pizza-brothers.html?username=' + encodeURIComponent("welcome " + item.userName);
+                    window.location.href = url;
+
                 }
             });
+
+            if (!found) {
+                console.log("incorrect password and username");
+            }
 
         })
         .catch(error => {
