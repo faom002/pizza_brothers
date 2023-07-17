@@ -2,42 +2,28 @@ const buttonLogin = document.getElementById('login-btn');
 const inputPasswordLogin = document.getElementById('password-login');
 const inputUserNameLogin = document.getElementById('login-input');
 
-function loginExisitingUser() {
+function loginExistingUser() {
     const userName = inputUserNameLogin.value;
     const password = parseInt(inputPasswordLogin.value);
 
+    const url = `http://localhost:8080/pizza/user?user=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`;
 
-    //    console.log('Input username:', userName);
-    // console.log('Input password:', password);
-
-    fetch('http://localhost:8080/pizza/all')
-        .then(response => response.json())
+    fetch(url)
+        .then(response => response.text())  // Use response.text() because our method in backend returns type string instead of response.json()
         .then(data => {
-            // Process the retrieved data here
-            let found = false;
-            data.forEach(item => {
-                if (userName === item.userName && password === item.password) {
-                    console.log(item.userName + " " + item.password);
-                    found = true;
-                   
-                    const url = 'pizza-brothers.html?username=' + encodeURIComponent("welcome " + item.userName);
-                    window.location.href = url;
+            if (data === userName) {  // Compare the response with the userName
+                console.log(data + " is logged in successfully");
 
-                }
-            });
-
-            if (!found) {
-                console.log("incorrect password and username");
+                const redirectUrl = 'pizza-brothers.html?username=' + encodeURIComponent("welcome " + data);
+                window.location.href = redirectUrl;
+            } else {
+                console.log("Incorrect password or username");
             }
-
         })
         .catch(error => {
             // Handle any errors that occur during the request
             console.error(error);
         });
-
-
-
 }
 
-buttonLogin.onclick = loginExisitingUser;
+buttonLogin.onclick = loginExistingUser;
