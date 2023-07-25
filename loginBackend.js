@@ -6,7 +6,7 @@ function loginExistingUser() {
     const userName = inputUserNameLogin.value;
     const password = parseInt(inputPasswordLogin.value);
 
-    const url = `http://localhost:8080/pizza/user?user=${encodeURIComponent(userName)}&password=${encodeURIComponent(password)}`;
+    const url = `http://localhost:8080/pizza/user?username=${userName}&password=${password}`;
 
     fetch(url)
         .then(response => response.text())  // Use response.text() because our method in backend returns type string instead of response.json()

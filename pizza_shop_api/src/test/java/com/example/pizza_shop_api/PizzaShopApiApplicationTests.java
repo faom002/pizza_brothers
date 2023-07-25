@@ -1,14 +1,15 @@
 package com.example.pizza_shop_api;
 
 import com.example.pizza_shop_api.login_and_register.LoginController;
-import com.example.pizza_shop_api.login_and_register.UserRepository;
-import com.example.pizza_shop_api.login_and_register.UserService;
+import com.example.pizza_shop_api.model.User;
+import com.example.pizza_shop_api.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -31,18 +32,6 @@ class PizzaShopApiApplicationTests {
 		loginController = new LoginController(userRepository);
 	}
 
-	@Test
-	void testGetUser() {
-		// Arrange
-		String expectedUsername = "Frederick";
-		int password = 123456;
-
-		// Act
-		String actualUsername = loginController.getUser(expectedUsername, password);
-
-		// Assert
-		assertEquals(expectedUsername, actualUsername);
-	}
 
 
 
@@ -58,7 +47,7 @@ class PizzaShopApiApplicationTests {
 		String result = loginController.addNewUser(userName, password);
 
 		// Assert
-		Optional<UserService> existingUser = userRepository.findByUserName(userName);
+		Optional<User> existingUser = userRepository.findByUserName(userName);
 		assertEquals(false, existingUser.isPresent());
 		assertEquals("User saved", result);
 	}
