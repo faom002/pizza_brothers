@@ -6,15 +6,18 @@ function loginExistingUser() {
     const userName = inputUserNameLogin.value;
     const password = parseInt(inputPasswordLogin.value);
 
-    const url = `http://localhost:8080/pizza/user?username=${userName}&password=${password}`;
+    const url = `http://localhost:8081/pizza/user?username=${encodeURIComponent(userName)}&password=${password}`;
+
+        console.log(url);
 
     fetch(url)
-        .then(response => response.text())  // Use response.text() because our method in backend returns type string instead of response.json()
+        .then(response => response.json())  // Parse the response as JSON
         .then(data => {
-            if (data === userName) {  // Compare the response with the userName
-                console.log(data + " is logged in successfully");
+            if (data.length > 0) {
+                const user = data[0]; // Assuming the backend returns an array of users with matching credentials
+                console.log(user.userName + " is logged in successfully"); // 'userName' should be lowercase
 
-                const redirectUrl = 'pizza-brothers.html?username=' + encodeURIComponent("welcome " + data);
+                const redirectUrl = 'pizza-brothers.html?username=' + encodeURIComponent("welcome " + user.userName);
                 window.location.href = redirectUrl;
             } else {
                 console.log("Incorrect password or username");
@@ -26,4 +29,4 @@ function loginExistingUser() {
         });
 }
 
-buttonLogin.onclick = loginExistingUser;
+buttonLogin.addEventListener('click', loginExistingUser);

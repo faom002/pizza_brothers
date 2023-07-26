@@ -9,7 +9,7 @@ function registerUser() {
     const userName = inputUserNameRegistration.value;
     const password = inputPasswordRegistration.value;
 
-    fetch("http://localhost:8080/pizza/add", {
+    fetch("http://localhost:8081/pizza/add", {
             method: "POST",
             body: new URLSearchParams({
                 userName: userName,
