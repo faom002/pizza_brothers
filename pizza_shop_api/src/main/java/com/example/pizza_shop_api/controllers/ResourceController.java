@@ -1,4 +1,4 @@
-package com.example.pizza_shop_api.login_and_register;
+package com.example.pizza_shop_api.controllers;
 
 
 import com.example.pizza_shop_api.model.User;
@@ -11,10 +11,10 @@ import java.util.Optional;
 @RestController // This means that this class is a Controller
 @RequestMapping(path="/pizza") // This means URL's start with /pizza (after Application path)
 @CrossOrigin(origins = "*") //  allows other application outside this project to communicate with backend
-public class LoginController {
+public class ResourceController {
     private final UserRepository userRepository;
 
-    public LoginController(UserRepository userRepository){
+    public ResourceController(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 
@@ -43,4 +43,7 @@ public class LoginController {
     public List<User> getUser(@RequestParam(name = "username") String user, @RequestParam(name = "password") int password){
         return userRepository.findByUserNameAndPassword(user,password);
     }
+
+
+    
 }

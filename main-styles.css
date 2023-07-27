@@ -6,8 +6,25 @@ body {
     background-color: #761f18;
     margin: 8px 8px;
     display: flex;
+    border: solid black 1px;
 
 }
+
+.pizza-brothers-welcome{
+  display: flex;
+  margin: 20px 350px;
+  justify-content: center;
+background-color: white;
+    border: solid black 1px;
+
+
+}
+
+.pizza-brothers-welcome h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+
 
 
 

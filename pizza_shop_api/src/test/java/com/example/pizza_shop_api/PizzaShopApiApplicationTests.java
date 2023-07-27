@@ -1,6 +1,6 @@
 package com.example.pizza_shop_api;
 
-import com.example.pizza_shop_api.login_and_register.LoginController;
+import com.example.pizza_shop_api.controllers.ResourceController;
 import com.example.pizza_shop_api.model.User;
 import com.example.pizza_shop_api.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -24,12 +23,12 @@ class PizzaShopApiApplicationTests {
 	@Mock
 	private UserRepository userRepository;
 
-	private LoginController loginController;
+	private ResourceController resourceController;
 
 	@BeforeEach
 	void setup() {
 		MockitoAnnotations.openMocks(this);
-		loginController = new LoginController(userRepository);
+		resourceController = new ResourceController(userRepository);
 	}
 
 
@@ -44,7 +43,7 @@ class PizzaShopApiApplicationTests {
 		when(userRepository.findByUserName(userName)).thenReturn(Optional.empty());
 
 		// Act
-		String result = loginController.addNewUser(userName, password);
+		String result = resourceController.addNewUser(userName, password);
 
 		// Assert
 		Optional<User> existingUser = userRepository.findByUserName(userName);
