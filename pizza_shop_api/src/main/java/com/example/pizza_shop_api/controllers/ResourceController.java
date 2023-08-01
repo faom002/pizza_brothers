@@ -42,10 +42,7 @@ public class ResourceController {
     }
 
 
-    @GetMapping(path="/all")
-    public  Iterable<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+
 
     @GetMapping(path="/user")
     public List<User> getUser(@RequestParam(name = "username") String user, @RequestParam(name = "password") int password){
@@ -55,7 +52,7 @@ public class ResourceController {
 
     @GetMapping(path = "/menus/add")
     public Iterable<Menus> addPredefinedMenu() {
-        String imagePath = "C:\\Users\\Faisa\\Documents\\Frontend\\Personal-projects\\pizza_brothers\\pizza_shop_api\\src\\main\\resources\\images\\pizza-mozzarella.jpg";
+        String imagePath = "C:\\Users\\Faisa\\OneDrive\\Dokumenter\\codeAcademy\\personal-project\\pizza_brothers\\pizza_shop_api\\src\\main\\resources\\images\\pizza-mozzarella.jpg";
         byte[] imageBytes;
         try {
             imageBytes = ImageUtils.imageToByteArray(imagePath);

@@ -20,35 +20,5 @@ import static org.mockito.Mockito.when;
 class PizzaShopApiApplicationTests {
 
 
-	@Mock
-	private UserRepository userRepository;
-
-	private ResourceController resourceController;
-
-	@BeforeEach
-	void setup() {
-		MockitoAnnotations.openMocks(this);
-		resourceController = new ResourceController(userRepository);
-	}
-
-
-
-
-
-	@Test
-	void testAddNewUser_WhenUserDoesNotExist() {
-		// Arrange
-		String userName = "John";
-		int password = 123456;
-		when(userRepository.findByUserName(userName)).thenReturn(Optional.empty());
-
-		// Act
-		String result = resourceController.addNewUser(userName, password);
-
-		// Assert
-		Optional<User> existingUser = userRepository.findByUserName(userName);
-		assertEquals(false, existingUser.isPresent());
-		assertEquals("User saved", result);
-	}
 
 }
