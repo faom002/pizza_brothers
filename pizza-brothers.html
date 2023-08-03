@@ -27,11 +27,13 @@
                 <button id="log-out" class="button-74" role="button"><a href="pizza-brothers.html">Log out</a></button>
             </div>
         </section>
+
+
         <section class="pizza-brothers-welcome">
             <h1>Welcome to Pizza brothers shop</h1>
         </section>
-        <section class="pizza-brothers-menus">
-            <div id="menus"></div>
+        <section>
+            <div id="menus" class="menus"></div>
         </section>
     </main>
     <script>
@@ -56,31 +58,34 @@
         logoutButton.style.display = 'none';
     }
 
+const addingMenus = document.getElementById('menus');
 
-    const addingMenus = document.getElementById('menus');
+const getMenus = () => {
+  fetch('http://localhost:8081/pizza/menus/all')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
 
-    const getMenus = () => {
-        fetch('http://localhost:8081/pizza/menus/all')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
+      data.forEach(menu => {
+        const menuDiv = document.createElement('div');
+        menuDiv.classList.add('menu-item');
+        menuDiv.innerHTML = `
+          <h3>${menu.menuName}</h3>
+           <div class="cart-icon-container">
+           <div class="cart-icon-menus"></div>
+            </div>
+          <p>Ingredients: ${menu.menuIngredient}</p>
+          <p>Price: ${menu.menuPrice}</p>
+          <img class="pizza-image" src="data:image/jpeg;base64,${menu.menuImage}" alt="Menu Image" />
 
-                data.forEach(menu => {
-                    const menuDiv = document.createElement('div');
-                    menuDiv.innerHTML = `
-                    <h3>${menu.menuName}</h3>
-                    <p>Ingredients: ${menu.menuIngredient}</p>
-                    <p>Price: ${menu.menuPrice}</p>
-                    <img src="data:image/jpeg;base64,${menu.menuImage}" alt="Menu Image" />
-                `;
-                    addingMenus.appendChild(menuDiv);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching menus:', error);
-            });
-    };
-
+        `;
+        addingMenus.appendChild(menuDiv);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching menus:', error);
+    });
+};
 
 
     getMenus();

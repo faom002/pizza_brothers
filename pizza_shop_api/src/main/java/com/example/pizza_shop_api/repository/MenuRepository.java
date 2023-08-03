@@ -8,5 +8,6 @@ import java.util.List;
 public interface MenuRepository extends CrudRepository <Menus,Integer> {
 
 
+    Menus findByMenuNameAndMenuIngredientAndMenuPrice(String pizzaWithBacon, String s, int i);
 
 }

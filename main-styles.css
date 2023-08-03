@@ -13,11 +13,39 @@ body {
 .cart-icon {
   width: 40px;
   height: 40px;
-  position: relative; /* Add position relative */
-  top: 30px; /* Adjust the top value to move the icon down */
+  position: relative; 
+  top: 30px; 
   background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>');
 }
 
+.cart-icon-container{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.cart-icon-menus {
+  width: 40px;
+  height: 40px;
+  top: 30px; 
+  background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-cart" viewBox="0 0 16 16"> <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/> </svg>');
+}
+
+.cart-icon-menus:hover {
+  cursor: pointer;
+
+  background-color: rgba(0, 0, 128, 0.7); 
+
+  border-radius: 8%;
+}
+
+.cart-icon-menus:active {
+  cursor: pointer;
+
+  background-color: rgba(0, 0, 100, 0.7); 
+
+  border-radius: 8%;
+}
 .pizza-brothers-welcome {
   display: flex;
   justify-content: center;
@@ -34,29 +62,34 @@ body {
 
 
 
-.pizza-brothers-menus {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px 10px;
-  border: 1px solid black;
-  box-sizing: border-box; /* Include the border in the element's total width */
+.menus{
+   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; 
+  padding: 20px; 
 }
 
-.pizza-brothers-menus img {
-  width: 100%; /* Make the image scale to 100% of its parent's width (including the border) */
-  height: auto; /* Automatically adjust the height to maintain the aspect ratio */
-  display: block;
-}
 
-.pizza-brothers-menus p,
-.pizza-brothers-menus h3 {
+.menu-item {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 10px;
   text-align: center;
+    transition: box-shadow 0.3s ease-in-out; 
 }
 
 
+.menu-item:hover{
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1); 
 
+}
 
+.pizza-image {
+  max-width: 65%;
+  height: auto;
+  margin-bottom: 10px; 
+}
 
 .pizza-brothers img {
     width: 10vh;
@@ -94,7 +127,7 @@ body {
   animation-iteration-count: 1;
 }
 
-/*animation for top bar*/
+
 
 @keyframes pizza-brothers-animation-in {
   from {
@@ -134,7 +167,6 @@ body {
 
 
 
-/* css for button*/
 .button-74 {
   background-color: #fbeee0;
   border: 2px solid #422800;
@@ -173,7 +205,6 @@ body {
   transform: translate(2px, 2px);
 }
 
-/*media queries making it support other devices*/
 @media (max-width: 767px) {
 
  .pizza-brothers {

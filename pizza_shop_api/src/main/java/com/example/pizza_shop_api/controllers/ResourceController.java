@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController // This means that this class is a Controller
-@RequestMapping(path="/pizza") // This means URL's start with /pizza (after Application path)
-@CrossOrigin(origins = "*") //  allows other application outside this project to communicate with backend
+@RestController
+@RequestMapping(path="/pizza")
+@CrossOrigin(origins = "*")
 public class ResourceController {
     private final UserRepository userRepository;
 
@@ -52,27 +52,54 @@ public class ResourceController {
 
     @GetMapping(path = "/menus/add")
     public Iterable<Menus> addPredefinedMenu() {
-        String imagePath = "C:\\Users\\Faisa\\OneDrive\\Dokumenter\\codeAcademy\\personal-project\\pizza_brothers\\pizza_shop_api\\src\\main\\resources\\images\\pizza-mozzarella.jpg";
-        byte[] imageBytes;
-        try {
-            imageBytes = ImageUtils.imageToByteArray(imagePath);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
+        String[] imagePaths = {
+                "C:\\Users\\Faisa\\Documents\\codeAcademy\\personal-project\\pizza_brothers\\pizza_shop_api\\src\\main\\resources\\images\\pizza-mozzarella.jpg",
+                "C:\\Users\\Faisa\\Documents\\codeAcademy\\personal-project\\pizza_brothers\\pizza_shop_api\\src\\main\\resources\\images\\bacon-pizza.jpg",
+                "C:\\Users\\Faisa\\Documents\\codeAcademy\\personal-project\\pizza_brothers\\pizza_shop_api\\src\\main\\resources\\images\\smokey-bacon-pizza.jpg"
+        };
+
+        List<Menus> predefinedMenus = new ArrayList<>();
+
+        predefinedMenus.add(createMenu("Pizza", "Cheese, Tomato, Pepperoni", 199, imagePaths[0]));
+        predefinedMenus.add(createMenu("Pizza with Bacon", "Cheese, Tomato, Pepperoni, Bacon", 250, imagePaths[1]));
+        predefinedMenus.add(createMenu("Pizza with Bacon test", "Cheese, Tomato, Pepperoni, Bacontest", 200, imagePaths[2]));
+
+        for (Menus menu : predefinedMenus) {
+            if (!menuExists(menu)) {
+                this.menuRepository.save(menu);
+            }
         }
-
-        Menus menu = new Menus();
-        menu.setMenuName("Pizza");
-        menu.setMenuIngredient("Cheese, Tomato, Pepperoni");
-        menu.setMenuPrice(199);
-        menu.setMenuImage(imageBytes);
-
-        this.menuRepository.save(menu);
 
         return this.menuRepository.findAll();
     }
 
-@GetMapping(path = "/menus/all")
+    private Menus createMenu(String menuName, String menuIngredient, int menuPrice, String imagePath) {
+        Menus menu = new Menus();
+        menu.setMenuName(menuName);
+        menu.setMenuIngredient(menuIngredient);
+        menu.setMenuPrice(menuPrice);
+
+        try {
+            byte[] imageBytes = ImageUtils.imageToByteArray(imagePath);
+            menu.setMenuImage(imageBytes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return menu;
+    }
+
+    private boolean menuExists(Menus menu) {
+        Menus existingMenu = menuRepository.findByMenuNameAndMenuIngredientAndMenuPrice(
+                menu.getMenuName(),
+                menu.getMenuIngredient(),
+                menu.getMenuPrice()
+        );
+        return existingMenu != null;
+    }
+
+
+    @GetMapping(path = "/menus/all")
     public Iterable<Menus> getAllMenus(){
         return this.menuRepository.findAll();
 }

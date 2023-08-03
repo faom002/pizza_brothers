@@ -7,16 +7,18 @@ import jakarta.persistence.*;
 public class Menus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String menuName;
+    @Column(unique = true)
     private String menuIngredient;
-
+    @Column(unique = true)
     private int menuPrice;
 
     @Lob
-    @Column(name = "menu_image", nullable = true, columnDefinition = "mediumblob") // Adjust the columnDefinition accordingly
+    @Column(name = "menu_image", nullable = true, columnDefinition = "mediumblob", unique = true) // Adjust the columnDefinition accordingly
     private byte[] menuImage;
 
 
